@@ -1,0 +1,17 @@
+{
+    "name": "लीपि ट्विस्ट",
+    "short_name": "लीपि ट्विस्ट",
+    "theme_color": "#131313",
+    "background_color": "white",
+    "display": "standalone",
+    "orientation": "portrait",
+    "scope": "/",
+    "start_url": "index.html",
+      "icons": [
+      {
+        "src": "assets/srivatsa.png",
+        "type": "image/png",
+        "sizes": "192x192"
+      }
+    ]
+  }
