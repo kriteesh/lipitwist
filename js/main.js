@@ -38,7 +38,10 @@ nasalSoundCorr = arr => arr.replace(/[JNnm](?=k|g)/g,'G').replace(/[GNnm](?=c|j)
 
 twist = (lang) =>(val)=> { 
     if(val==null) reflection.innerHTML = '';
-    reflection.innerHTML = devToLang(hkToDev(val))(lang);
+    else {
+        if(chooser.value=='english') reflection.innerHTML = hkToIast(area.value);
+        else reflection.innerHTML = devToLang(hkToDev(val))(lang);
+    }
 }
 
 area.onkeyup = () => {
@@ -46,8 +49,7 @@ area.onkeyup = () => {
 }
 
 chooser.onchange = () =>{
-    current = chooser.innerText ;
-    if(chooser.innerText == 'Diacritics'){
+    if(chooser.value == 'english'){
         reflection.innerText = hkToIast(area.value);
     }
     else reflection.innerText = devToLang(hkToDev(area.value))(chooser.value.split(","));
