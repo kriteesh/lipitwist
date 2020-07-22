@@ -34,6 +34,6 @@ choosy = [
         lingo : sharada 
     },
     {
-        tag : 'English',
+        tag : 'Diacritics',
         lingo : 'english'
     }];
