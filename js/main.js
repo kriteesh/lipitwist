@@ -12,7 +12,7 @@ righthead = create(header)('div')('righthead')({});
 
 righthead.innerText = heading.split(" ")[1];
 
-area = create(container)('textarea')('area')({placeholder:'Type here in Harvard-Kyoto Protocol..Our protocol is under development'});
+area = create(container)('textarea')('area')({placeholder:'Type here in Harvard-Kyoto Protocol\n\nType any random numbers as well to see the magic'});
 
 chooser = create(container)('select')('chooser')({});
 
@@ -41,11 +41,21 @@ twist = (lang) =>(val)=> {
     else {
         if(chooser.value=='english') reflection.innerHTML = hkToIast(area.value);
         else reflection.innerHTML = devToLang(hkToDev(val))(lang);
+    }  
+}
+
+numero = arr =>{
+    re = arr.match(/[0-9]+/ig);
+    if(re!=null){
+        for(let i=0; i<re.length; i++){
+            arr = arr.replace(re[i],twoStep(re[i]));
+        }
     }
+  return arr;
 }
 
 area.onkeyup = () => {
-    twist(chooser.value.split(","))(nasalSoundCorr(area.value));
+    twist(chooser.value.split(","))(nasalSoundCorr(numero(area.value)));
 }
 
 chooser.onchange = () =>{
