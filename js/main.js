@@ -62,7 +62,7 @@ chooser.onchange = () =>{
     if(chooser.value == 'english'){
         reflection.innerText = hkToIast(area.value);
     }
-    else reflection.innerText = devToLang(hkToDev(area.value))(chooser.value.split(","));
+    else reflection.innerText = devToLang(numero(hkToDev(area.value)))(chooser.value.split(","));
 }
 
 destroyClickedElement = (event) => document.body.removeChild(event.target);
