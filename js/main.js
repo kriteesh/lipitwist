@@ -12,33 +12,7 @@ righthead = create(header)('div')('righthead')({});
 
 righthead.innerText = heading.split(" ")[1];
 
-
 area = create(container)('textarea')('area')({placeholder:'Type here in Harvard-Kyoto Protocol..Our protocol is under development'});
-
-// tablet_ = create(container)('div')('tablet')({});
-
-// tabs_ = ['Nasal Correction','Clear'].map(x=>{
-//     y = create(tablet_)('div')('tabs')({});
-//     y.innerText = x;
-//     return y;
-// });
-
-// guide = create(container)('div')('guide')({});
-
-// tablet = create(container)('div')('tablet')({});
-
-// tabs = ['Previous','Next','Hide'].map(x=>{
-//     y = create(tablet)('div')('tabs')({});
-//     y.innerText =x;
-//     return y;
-// });
-
-// devanagari.map((x,i)=>{
-//     if(i<16){
-//     y = create(guide)('div')('guidette')({});
-//     y.innerText = devanagari[i] + " " + oriya[i];
-//     }
-// })
 
 chooser = create(container)('select')('chooser')({});
 
@@ -59,6 +33,7 @@ saver.innerText = 'Save as Text File';
 copier = create(footer)('div')('copier')({});
 copier.innerText = 'Copy to Clipboard';
 
+nasalSoundCorr = arr => arr.replace(/[JNnm](?=k|g)/g,'G').replace(/[GNnm](?=c|j)/g,'J').replace(/[GJnm](?=T|D)/g,'N').replace(/[GJNm](?=t|d)/g,'n').replace(/[GJNn](?=p|b)/g,'m');
 
 
 twist = (lang) =>(val)=> { 
@@ -67,15 +42,15 @@ twist = (lang) =>(val)=> {
 }
 
 area.onkeyup = () => {
-    twist(chooser.value.split(","))(area.value);
+    twist(chooser.value.split(","))(nasalSoundCorr(area.value));
 }
 
 chooser.onchange = () =>{
-    if(chooser.value == 'english'){
-        if(area.value.length==0) reflection.innerHTML = "";
-        else reflection.innerHTML = hkToIast(area.value);
+    current = chooser.innerText ;
+    if(chooser.innerText == 'Diacritics'){
+        reflection.innerText = hkToIast(area.value);
     }
-    else reflection.innerHTML = devToLang(hkToDev(area.value))(chooser.value.split(","));
+    else reflection.innerText = devToLang(hkToDev(area.value))(chooser.value.split(","));
 }
 
 destroyClickedElement = (event) => document.body.removeChild(event.target);
