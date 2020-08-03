@@ -98,7 +98,7 @@ html,body{
     background : #8BC34A;
 }
 
-.chooser{
+.chooser,.chooserOne{
     margin-right: 30vw;
     outline: none;
     height: 6vh;
@@ -116,6 +116,11 @@ html,body{
     border: 2px solid black;
     box-shadow: 4px 5px 0 black;
     padding-left : 3vw;
+}
+
+.chooserOne{
+    width : 30vw;
+    margin-left : 35vw;
 }
 
 .options{
@@ -158,3 +163,6 @@ html,body{
 .footer>div:hover{
     background : #8BC34A;
 }
+
+
+
